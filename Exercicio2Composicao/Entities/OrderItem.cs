@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace Exercicio2Composicao.Entities
 {
@@ -23,6 +24,13 @@ namespace Exercicio2Composicao.Entities
 			double subtotal = Quantity * Price;
 
 			return subtotal;
+		}
+
+		public override string ToString()
+		{
+			string msg = $"{Product.Name}, ${Product.Price}, Quantity: {Quantity}, Subtotal: ${SubTotal().ToString("F2", CultureInfo.InvariantCulture)}";
+
+			return msg;
 		}
 	}
 }

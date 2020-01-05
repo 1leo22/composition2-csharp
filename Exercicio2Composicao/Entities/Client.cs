@@ -10,6 +10,7 @@ namespace Exercicio2Composicao.Entities.Enums
 		public string Email { get; set; }
 		public DateTime BirthDate { get; set; }
 
+		public const string DATE_FORMAT = "dd/MM/yyyy";
 		public Client(string name, DateTime birthDate) : this (name, null, birthDate)
 		{
 
@@ -20,6 +21,12 @@ namespace Exercicio2Composicao.Entities.Enums
 			Name = name;
 			Email = email;
 			BirthDate = birthDate;
+		}
+		public override string ToString()
+		{
+			string msg = $"{Name} ({BirthDate.ToString(DATE_FORMAT)}) - {Email}";
+
+			return msg;
 		}
 	}
 }

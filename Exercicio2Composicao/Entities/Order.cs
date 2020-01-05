@@ -13,8 +13,6 @@ namespace Exercicio2Composicao.Entities
 		public List<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
 		public Client Client { get; set; }
 
-		public const string DATE_FORMAT = "dd/MM/yyyy";
-
 		public Order(DateTime moment, OrderStatus myProperty, Client client)
 		{
 			Moment = moment;
@@ -47,24 +45,13 @@ namespace Exercicio2Composicao.Entities
 			StringBuilder sb = new StringBuilder();
 
 			sb.AppendLine("ORDER SUMARY: ");
-			sb.Append("Order moment: ");
-			sb.AppendLine(Moment.ToString());
-			sb.Append("Order status: ");
-			sb.AppendLine(MyProperty.ToString());
-			sb.Append("Client: ");
-			sb.Append(Client.Name);
-			sb.Append(" (");
-			sb.Append(Client.BirthDate.ToString(DATE_FORMAT));
-			sb.Append(") - ");
-			sb.AppendLine(Client.Email);
+			sb.AppendLine("Order moment: " + Moment.ToString());
+			sb.AppendLine("Order status: " + MyProperty.ToString());
+			sb.AppendLine("Client: " + Client);
 			sb.AppendLine("Order items: ");
 			foreach(OrderItem item in OrderItem) 
 			{
-				sb.Append(item.Product.Name);
-				sb.Append(", Quantity: ");
-				sb.Append(item.Quantity);
-				sb.Append(", SubTotal: $");
-				sb.AppendLine(item.SubTotal().ToString());
+				sb.AppendLine(item.ToString());
 			}
 			sb.Append("Total Price: $");
 			sb.Append(Total());
